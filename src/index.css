@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --primary-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hind Siliguri", sans-serif;
+  --color-lemon-primary: #84CC16;
+  --color-lemon-hover: #65A30D;
+  --color-lemon-light: #ECFCCB;
+}
+
+html, body {
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: var(--primary-font);
+  background-color: #f8fafc;
+  color: #111827;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fluid media */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure minimum touch target on mobile buttons & interactive elements */
+@media (max-width: 768px) {
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+}
+
+/* Responsive typography utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================================================
+   Sweeping Shimmer / Light Beam CTA Animation (Additive Utility)
+   ========================================================================== */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: shimmerSweep 0.5s linear infinite;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(150%) skewX(-20deg);
+    opacity: 0;
+  }
+}
